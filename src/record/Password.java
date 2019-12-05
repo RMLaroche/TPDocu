@@ -27,9 +27,8 @@ public class Password extends Dialog implements ActionListener {
 	private String whichDialog;
 
 	/**
-	 * ********************************************************
-	 * constructor is used to create the Password dialoog's Labels 
-	 *  Text fields, Buttons, and Panels
+	 * ******************************************************** constructor is used
+	 * to create the Password dialoog's Labels Text fields, Buttons, and Panels
 	 ********************************************************/
 	public Password(HardwareStore hw_Store) {
 		super(new Frame(), "Password Check", true);
@@ -68,8 +67,8 @@ public class Password extends Dialog implements ActionListener {
 	}
 
 	/**
-	 * **************************************************************
-	 *  Method displayDialog () is used to display the dialog that checks the userID and
+	 * ************************************************************** Method
+	 * displayDialog () is used to display the dialog that checks the userID and
 	 * password that allows the user to add, update, delete hardware items for the
 	 * various tables.
 	 ****************************************************************/
@@ -82,8 +81,7 @@ public class Password extends Dialog implements ActionListener {
 	}
 
 	/**
-	 * ****************************************************************** 
-	 * Method:
+	 * ****************************************************************** Method:
 	 * actionPerformed() method responds to the enter or cancel button being pressed
 	 * on the Password dialog.
 	 *********************************************************************/
@@ -104,7 +102,7 @@ public class Password extends Dialog implements ActionListener {
 				JOptionPane.showMessageDialog(null, "A userid or the password was incorrect.\n", "Invalid Password",
 						JOptionPane.INFORMATION_MESSAGE);
 			}
-			
+
 			userID.setText("");
 			password.setText("");
 		}

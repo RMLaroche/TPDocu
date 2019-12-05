@@ -13,218 +13,200 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class UpdateRec extends Dialog  implements ActionListener {
-    private RandomAccessFile file;
-    private JTextField recID, toolType, brandName, toolDesc,
-              partNum, quantity, price;
-    private JButton cancel, save;
-    private Record data;
-    private int theRecID, toCont;
-    private String pData [] [] ;
-    private HardwareStore hwstore ;
-    /** ********************************************************
-     * Method: UpdateRec()
-     ********************************************************/
-    public UpdateRec( HardwareStore hw_store, RandomAccessFile f ,
-                  String p_Data [] [], int iiPassed)
-    {
+public class UpdateRec extends Dialog implements ActionListener {
+	private RandomAccessFile file;
+	private JTextField recID, toolType, brandName, toolDesc, partNum, quantity, price;
+	private JButton cancel, save;
+	private Record data;
+	private int theRecID, toCont;
+	private String pData[][];
+	private HardwareStore hwstore;
 
+	/**
+	 * ******************************************************** Method: UpdateRec()
+	 ********************************************************/
+	public UpdateRec(HardwareStore hw_store, RandomAccessFile f, String p_Data[][], int iiPassed) {
 
-       super( new Frame(), "Update Record", true );
-       setSize( 400, 280 );
-       setLayout( new GridLayout( 9, 2 ) );
-       file = f;
-       pData = p_Data ;
-       hwstore = hw_store ;
+		super(new Frame(), "Update Record", true);
+		setSize(400, 280);
+		setLayout(new GridLayout(9, 2));
+		file = f;
+		pData = p_Data;
+		hwstore = hw_store;
 
-       upDSetup() ;
-    }
+		upDSetup();
+	}
 
-    /** ********************************************************
-     * Method: upDSetup() is used to create the labels, text
-     *          fields, and buttons for the UpDate Dialog.
-     ********************************************************/
-    public void upDSetup() {
+	/**
+	 * ******************************************************** Method: upDSetup()
+	 * is used to create the labels, text fields, and buttons for the UpDate Dialog.
+	 ********************************************************/
+	public void upDSetup() {
 
-       recID = new JTextField( 10 );
-       save = new JButton( "Save Changes" );
-       cancel = new JButton( "Cancel" );
+		recID = new JTextField(10);
+		save = new JButton("Save Changes");
+		cancel = new JButton("Cancel");
 
-       /** attach the ActionListener */
-       recID.addActionListener( this );
-       save.addActionListener( this );
-       cancel.addActionListener( this );
+		/** attach the ActionListener */
+		recID.addActionListener(this);
+		save.addActionListener(this);
+		cancel.addActionListener(this);
 
-       add( new JLabel( "Record ID" ) );
-       add( recID );
-       add( new JLabel( "Type of Tool" ) );
-       add( new JTextField( 10 ) );
-       add( new JLabel( "Brand Name" ) );
-       add( new JTextField( 10 ) );
-       add( new JLabel( "Tool Description" ) );
-       add( new JTextField( 10 ) );
-       add( new JLabel( "Part Number" ) );
-       add( new JTextField( 10 ) );
-       add( new JLabel( "Quantity" ) );
-       add( new JTextField( 10 ) );
-       add( new JLabel( "Price" ) );
-       add( new JTextField( 10 ) );
-       add( save );
-       add( cancel );
+		add(new JLabel("Record ID"));
+		add(recID);
+		add(new JLabel("Type of Tool"));
+		add(new JTextField(10));
+		add(new JLabel("Brand Name"));
+		add(new JTextField(10));
+		add(new JLabel("Tool Description"));
+		add(new JTextField(10));
+		add(new JLabel("Part Number"));
+		add(new JTextField(10));
+		add(new JLabel("Quantity"));
+		add(new JTextField(10));
+		add(new JLabel("Price"));
+		add(new JTextField(10));
+		add(save);
+		add(cancel);
 
-       data = new Record();
-    }
+		data = new Record();
+	}
 
-    /** ****************************************************
-     * Method: checkDigit() is used to ensure  that the data
-     * entered is a digit
-     *****************************************************/
-    public boolean  checkDigit(String strVal) {
+	/**
+	 * **************************************************** Method: checkDigit() is
+	 * used to ensure that the data entered is a digit
+	 *****************************************************/
+	public boolean checkDigit(String strVal) {
 
-       int strLength = 0;
-       boolean notDig = true;
+		int strLength = 0;
+		boolean notDig = true;
 
-       strLength = strVal.length();
+		strLength = strVal.length();
 
-       for (int ii = 0; ii < strLength; ii++) {
-          if (!Character.isDigit(strVal.charAt(ii)) ) {
-             notDig = false;
-             break;
-          }
-       }
+		for (int ii = 0; ii < strLength; ii++) {
+			if (!Character.isDigit(strVal.charAt(ii))) {
+				notDig = false;
+				break;
+			}
+		}
 
-       return notDig;
-    }
+		return notDig;
+	}
 
-    /** *************************************************************
-     * Method: actionPerformed() is the event handler that reesponds
-     *         to the GUI events generated by the UpDate dialog.
-     **************************************************************/
-    @Override
-	public void actionPerformed( ActionEvent e )   {
-       if ( e.getSource() == recID )  {
-          if ( checkDigit( recID.getText() ) ) {
-             theRecID = Integer.parseInt( recID.getText() );
-          }
-          else if ( theRecID < 0 || theRecID > 250 ) {
-             JOptionPane.showMessageDialog(null,
-                  "A recID entered was:  less than 0 or greater than 250, which is invalid.\n" +
-                  "Please enter a number greater than 0 and less than 251.", "RecID Entered",
-                  JOptionPane.INFORMATION_MESSAGE) ;
-             return;
-          }
+	/**
+	 * ************************************************************* Method:
+	 * actionPerformed() is the event handler that reesponds to the GUI events
+	 * generated by the UpDate dialog.
+	 **************************************************************/
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == recID) {
+			if (checkDigit(recID.getText())) {
+				theRecID = Integer.parseInt(recID.getText());
+			} else if (theRecID < 0 || theRecID > 250) {
+				JOptionPane.showMessageDialog(null,
+						"A recID entered was:  less than 0 or greater than 250, which is invalid.\n"
+								+ "Please enter a number greater than 0 and less than 251.",
+						"RecID Entered", JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
 
-          theRecID = Integer.parseInt( recID.getText() );
+			theRecID = Integer.parseInt(recID.getText());
 
-          System.out.println( "UpdateRec(): 2a - The record id being sought is " + theRecID) ;
+			System.out.println("UpdateRec(): 2a - The record id being sought is " + theRecID);
 
-          for ( int iii = 0;  iii < pData.length ; iii++ ) {
-             if ( pData[ iii  ] [ 0 ]  !=  null    )  {
-                if ( Integer.parseInt( pData[ iii  ] [ 0 ] ) == theRecID  ) {
-                   theRecID = Integer.parseInt( pData[ iii  ] [ 0 ] ) ;
-                   System.out.println( "UpdateRec(): 2b - The record id was found." ) ;
-                   break ;
-                }
-             }
-          }
+			for (int iii = 0; iii < pData.length; iii++) {
+				if (pData[iii][0] != null) {
+					if (Integer.parseInt(pData[iii][0]) == theRecID) {
+						theRecID = Integer.parseInt(pData[iii][0]);
+						System.out.println("UpdateRec(): 2b - The record id was found.");
+						break;
+					}
+				}
+			}
 
-          try {
+			try {
 
-             file = new RandomAccessFile( hwstore.aFile , "rw" );
-             file.seek( ( theRecID  ) * Record.getSize() );
-             data.ReadRec( file );
+				file = new RandomAccessFile(hwstore.aFile, "rw");
+				file.seek((theRecID) * Record.getSize());
+				data.ReadRec(file);
 
-             recID.setText( "" + theRecID );
-             toolType.setText( data.getToolType().trim() );
-             brandName.setText( data.getBrandName().trim() ) ;
-             toolDesc.setText( data.getToolDesc().trim() ) ;
-             partNum.setText( data.getPartNumber().trim() ) ;
-             quantity.setText( Integer.toString( data.getQuantity() ) );
-             price.setText(  data.getCost().trim() );
-             System.out.println( "UpdateRec(): 2c - The record found was " +
-                data.getRecID() + " " +
-                data.getBrandName() + " " +
-                data.getToolDesc() + " " +
-                data.getQuantity() + " " +
-                data.getCost() + " in file " + hwstore.aFile) ;
-          }
-          catch ( IOException ex ) {
-             recID.setText( "UpdateRec(): 2d -  Error reading file" );
-          }
+				recID.setText("" + theRecID);
+				toolType.setText(data.getToolType().trim());
+				brandName.setText(data.getBrandName().trim());
+				toolDesc.setText(data.getToolDesc().trim());
+				partNum.setText(data.getPartNumber().trim());
+				quantity.setText(Integer.toString(data.getQuantity()));
+				price.setText(data.getCost().trim());
+				System.out.println("UpdateRec(): 2c - The record found was " + data.getRecID() + " "
+						+ data.getBrandName() + " " + data.getToolDesc() + " " + data.getQuantity() + " "
+						+ data.getCost() + " in file " + hwstore.aFile);
+			} catch (IOException ex) {
+				recID.setText("UpdateRec(): 2d -  Error reading file");
+			}
 
-          if ( data.getRecID() >= 0 ) {
-             /*recID.setText( String.valueOf( data.getRecID() ) );
-             toolType.setText( data.getToolType().trim() );
-             brandName.setText( data.getBrandName().trim() ) ;
-             toolDesc.setText( data.getToolDesc().trim() ) ;
-             partNum.setText( data.getPartNumber().trim() ) ;
-             quantity.setText( Integer.toString( data.getQuantity() ) );
-             price.setText(  data.getCost().trim() ); */
-          }
-          else
-             recID.setText(  "This record " +
-                theRecID + " does not exist" );
-          }
-       else if ( e.getSource() == save ) {
-          try {
-             data.setRecID( Integer.parseInt( recID.getText() ) );
-             data.setToolType( toolType.getText().trim() );
-             data.setBrandName( brandName.getText().trim() );
-             data.setToolDesc( toolDesc.getText().trim() );
-             data.setPartNumber( partNum.getText().trim() ) ;
-             data.setQuantity( Integer.parseInt( quantity.getText().trim() ) );
-             data.setCost(  price.getText().trim()  );
+			if (data.getRecID() >= 0) {
+				/*
+				 * recID.setText( String.valueOf( data.getRecID() ) ); toolType.setText(
+				 * data.getToolType().trim() ); brandName.setText( data.getBrandName().trim() )
+				 * ; toolDesc.setText( data.getToolDesc().trim() ) ; partNum.setText(
+				 * data.getPartNumber().trim() ) ; quantity.setText( Integer.toString(
+				 * data.getQuantity() ) ); price.setText( data.getCost().trim() );
+				 */
+			} else
+				recID.setText("This record " + theRecID + " does not exist");
+		} else if (e.getSource() == save) {
+			try {
+				data.setRecID(Integer.parseInt(recID.getText()));
+				data.setToolType(toolType.getText().trim());
+				data.setBrandName(brandName.getText().trim());
+				data.setToolDesc(toolDesc.getText().trim());
+				data.setPartNumber(partNum.getText().trim());
+				data.setQuantity(Integer.parseInt(quantity.getText().trim()));
+				data.setCost(price.getText().trim());
 
-             file.seek( 0 ) ;
-             file.seek(  theRecID   * Record.getSize() );
-             data.write( file );
+				file.seek(0);
+				file.seek(theRecID * Record.getSize());
+				data.write(file);
 
-             System.out.println( "UpdateRec(): 3 - The record found was " +
-                data.getRecID() + " " +
-                data.getBrandName() + " " +
-                data.getToolDesc() + " " +
-                data.getQuantity() + " " +
-                data.getCost() + " in file " + hwstore.aFile) ;
+				System.out.println("UpdateRec(): 3 - The record found was " + data.getRecID() + " "
+						+ data.getBrandName() + " " + data.getToolDesc() + " " + data.getQuantity() + " "
+						+ data.getCost() + " in file " + hwstore.aFile);
 
-             Redisplay(  file, pData ) ;
-          }
-          catch ( IOException ex ) {
-             recID.setText( "Error writing file" );
-            return;
-          }
+				Redisplay(file, pData);
+			} catch (IOException ex) {
+				recID.setText("Error writing file");
+				return;
+			}
 
-          toCont = JOptionPane.showConfirmDialog(null,
-                 "Do you want to add another record? \nChoose one",
-                 "Choose one",
-                 JOptionPane.YES_NO_OPTION);
+			toCont = JOptionPane.showConfirmDialog(null, "Do you want to add another record? \nChoose one",
+					"Choose one", JOptionPane.YES_NO_OPTION);
 
-          if ( toCont == JOptionPane.YES_OPTION  )  {
-             recID.setText( "" );
-             toolType.setText( ""  );
-             quantity.setText( ""  );
-             brandName.setText( ""  );
-             toolDesc.setText( ""  );
-             partNum.setText( ""  );
-             price.setText( ""  );
-          }
-          else {
-             upClear();
-          }
-       }
-       else if ( e.getSource() == cancel ) {
-          setVisible( false );
-          upClear();
-       }
-    }
+			if (toCont == JOptionPane.YES_OPTION) {
+				recID.setText("");
+				toolType.setText("");
+				quantity.setText("");
+				brandName.setText("");
+				toolDesc.setText("");
+				partNum.setText("");
+				price.setText("");
+			} else {
+				upClear();
+			}
+		} else if (e.getSource() == cancel) {
+			setVisible(false);
+			upClear();
+		}
+	}
 
-    /** ********************************************************
-     * Method: upClear()
-     ********************************************************/
-    private void upClear()   {
-       recID.setText( "" );
-       brandName.setText( "" );
-       quantity.setText( "" );
-       price.setText( "" );
-       setVisible( false );
-    }
- }
+	/**
+	 * ******************************************************** Method: upClear()
+	 ********************************************************/
+	private void upClear() {
+		recID.setText("");
+		brandName.setText("");
+		quantity.setText("");
+		price.setText("");
+		setVisible(false);
+	}
+}
