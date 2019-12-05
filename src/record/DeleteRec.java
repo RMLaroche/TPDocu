@@ -46,13 +46,9 @@ delSetup() ;
 }
 
 /** ********************************************************
-* Method: delSetup() is used to create
-* 1- Label Record text field
-* 3- The Record ID button
-* 4- The Cancel button
+* Method: delSetup() is used to create new field and button
 ********************************************************/
 public void delSetup() {
-recIDLabel = new JLabel( "Record ID" );
 recID  = new JTextField( 10 );
 delete = new JButton( "Delete Record" );
 cancel = new JButton( "Cancel" );
@@ -61,7 +57,7 @@ cancel.addActionListener( this );
 delete.addActionListener( this );
 recID.addActionListener( this );
 
-add( recIDLabel);
+add( new JLabel( "Record ID" ));
 add( recID );
 add( delete );
 add( cancel );
@@ -71,11 +67,7 @@ data = new Record();
 
 /** ********************************************************
 * Method: actionPerformed() is used to respond to the
-* event emanating from the Delete Record dialog. They are:
-* 1- Pressing the enter key with the cursor in the record ID
-*    text field.
-* 2- Pressing the Delete button.
-* 3- Pressing the Cancel button.
+* event emanating from the Delete Record dialog.
 ********************************************************/
 public void actionPerformed( ActionEvent e )   {
 System.out.println( "DeleteRec(): 1a - In the actionPerformed() method. ") ;

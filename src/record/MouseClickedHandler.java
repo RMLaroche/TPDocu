@@ -7,7 +7,7 @@ import java.io.RandomAccessFile;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import record.HardwareStore.UpdateRec;
+
 
 public class MouseClickedHandler extends MouseAdapter {
     JTable table;
@@ -21,7 +21,8 @@ public class MouseClickedHandler extends MouseAdapter {
         f     = fPassed ;
 
     }
-    public void mouseClicked( MouseEvent e )    {
+    @Override
+	public void mouseClicked( MouseEvent e )    {
        if ( e.getSource() == table) {
            int ii = table.getSelectedRow() ;
            JOptionPane.showMessageDialog(null,
