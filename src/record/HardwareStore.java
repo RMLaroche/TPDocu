@@ -100,7 +100,7 @@ public class HardwareStore extends JFrame
    private JButton cancel, refresh;
    private JPanel buttonPanel ;
    protected boolean validPW = false ;
-   private boolean myDebug = false ; /** This flag toggles debug */
+   protected boolean myDebug = false ; /** This flag toggles debug */
 
 
    private String columnNames[] = {"Record ID", "Type of tool",
@@ -674,73 +674,26 @@ public class HardwareStore extends JFrame
 
    public void displayContent( String str ) {
 
-      String  df = null ,  title = null ;
-
-      if ( str.equals( "Lawn Mowers" ) ) {
-         df = new String("lawnmower.dat"  ) ;
-         aFile = new File( "lawnmower.dat" ) ;
-         title = new String( "Hardware Store: Lawn Mowers" ) ;
+      String[] name = str.split(" ");
+      name[0].substring(0,1).toLowerCase();
+      for(int i = 1; i < name.length; i++) {
+    	  name[i].substring(0,1).toUpperCase();
       }
-      else if ( str.equals( "Lawn Tractor Mowers" )  ) {
-         df = new String("lawnTractor.dat"  ) ;
-         aFile = new File( "lawnTractor.dat" ) ;
-         title = new String( "Hardware Store: Lawn Tractor Mowers" ) ;
-      }
-      else if ( str.equals( "Hand Drill Tools" )  ) {
-         df = new String("handDrill.dat"  ) ;
-         aFile = new File( "handDrill.dat" ) ;
-         title = new String( "Hardware Store:  Hand Drill Tools" ) ;
-      }
-      else if ( str.equals( "Drill Press Power Tools" )  ) {
-         df = new String("drillPress.dat"  ) ;
-         aFile = new File( "drillPress.dat" ) ;
-         title = new String( "Hardware Store: Drill Press Power Tools" ) ;
-      }
-      else if ( str.equals( "Circular Saws" )  ) {
-         df = new String("circularSaw.dat"  ) ;
-         aFile = new File( "circularSaw.dat" ) ;
-         title = new String( "Hardware Store: Circular Saws" ) ;
-      }
-      else if ( str.equals( "Hammers" )  ) {
-         df = new String("hammer.dat"  ) ;
-         aFile = new File( "hammer.dat" ) ;
-         title = new String( "Hardware Store: Hammers" ) ;
-      }
-      else if ( str.equals( "Table Saws" )  ) {
-         df = new String("tableSaw.dat"  ) ;
-         aFile = new File( "tableSaw.dat" ) ;
-         title = new String( "Hardware Store: Table Saws" ) ;
-      }
-      else if ( str.equals( "Band Saws" )  ) {
-         df = new String("bandSaw.dat"  ) ;
-         aFile = new File( "bandSaw.dat" ) ;
-         title = new String( "Hardware Store: Band Saws" ) ;
-      }
-      else if ( str.equals( "Sanders" )  ) {
-         df = new String("sanders.dat"  ) ;
-         aFile = new File( "sanders.dat" ) ;
-         title = new String( "Hardware Store: Sanders" ) ;
-      }
-      else if ( str.equals( "Staplers" )  ) {
-         df = new String("stapler.dat"  ) ;
-         aFile = new File( "stapler.dat" ) ;
-         title = new String( "Hardware Store: Staplers" ) ;
-      }
-
+      name.toString().concat(".dat");
+      
+      aFile = new File(name.toString());
+      String title = new String("Hardware Store: " + str);
+      
       try {
-         /** Open the .dat file in RW mode.
-          *  If the file does not exist, create it
-          *  and initialize it to 250 empty records.
-          */
 
-         sysPrintDebug("display(): 1a - checking to see if " + df + " exists." );
+         sysPrintDebug("display(): 1a - checking to see if " + name.toString() + " exists." );
          if ( !aFile.exists() ) {
 
-            sysPrintDebug("display(): 1b - " + df + " does not exist." );
+            sysPrintDebug("display(): 1b - " + name.toString() + " does not exist." );
 
          }
          else {
-            file = new RandomAccessFile( df , "rw" );
+            file = new RandomAccessFile( name.toString() , "rw" );
 
             this.setTitle( title );
 
@@ -751,33 +704,24 @@ public class HardwareStore extends JFrame
       }
       catch ( IOException e ) {
             System.err.println( e.toString() );
-            System.err.println( "Failed in opening " + df );
+            System.err.println( "Failed in opening " + name.toString() );
             System.exit( 1 );
       }
 
    }
 
-   /** ********************************************************
-    * Method: Redisplay() is used to redisplay/repopualte the
-    *         JTable.
-    *
-    * Called from the
-    * 1- display() method
-    * 2- actionPerformed() method of the UpdateRec class
-    * 3- actionPerformed() method of the DeleteRec class
-    ********************************************************/
    public void Redisplay( RandomAccessFile file, String a[][] ) {
 
-
-      for ( int ii = 0 ; ii < numEntries + 5; ii++ ) {
-         a[ ii ][ 0 ] = "" ;
-         a[ ii ][ 1 ] = "" ;
-         a[ ii ][ 2 ] = "" ;
-         a[ ii ][ 3 ] = "" ;
-         a[ ii ][ 4 ] = "" ;
-         a[ ii ][ 5 ] = "" ;
-         a[ ii ][ 6 ] = "" ;
+      for ( int i = 0 ; i < numEntries + 5; i++ ) {
+         a[ i ][ 0 ] = "" ;
+         a[ i ][ 1 ] = "" ;
+         a[ i ][ 2 ] = "" ;
+         a[ i ][ 3 ] = "" ;
+         a[ i ][ 4 ] = "" ;
+         a[ i ][ 5 ] = "" ;
+         a[ i ][ 6 ] = "" ;
       }
+      
       int entries = GetContenttoArrayFormat( file , a );
       sysPrintDebug("Redisplay(): 1  - The number of entries is " + entries);
       setEntries( entries ) ;
@@ -852,80 +796,68 @@ public class HardwareStore extends JFrame
       }
    }
 
-   /** ****************************************************************
-    * Method: toArray(RandomAccessFile lFile, String a[][])
-    *
-    * Purpose: Returns an array containing all of the
-    *          elements in this list in the correct
-    *          order.
-    *
-    * Called from the
-    * 1- Setup method of the HardwareStore class
-    * 2- Redisplay() method
-    ****************************************************************** */
    public int GetContenttoArrayFormat( RandomAccessFile file, String a[][] ) {
 
-      Record NodeRef = new Record() , PreviousNode  = null ;
+      Record NodeRef = new Record();
       
-      int ii = 0 , iii = 0 , fileSize = 0;
+      int size = 0 , col = 0 , fileSize = 0;
 
       try {
          fileSize = (int) file.length() / Record.getSize() ;
          sysPrintDebug("toArray(): 1 - The size of the file is " + fileSize ) ;
-         /** If the file is empty, do nothing.  */
+
          if (  fileSize > ZERO  ) {
 
              NodeRef.setFileLen( file.length() ) ;
 
 
-             while ( ii < fileSize )  {
+             while ( size < fileSize )  {
                 sysPrintDebug( "toArray(): 2 - NodeRef.getRecID is "
                                       + NodeRef.getRecID() );
 
                 file.seek( 0 ) ;
-                file.seek( ii *  NodeRef.getSize() ) ;
-                NodeRef.setFilePos( ii *  NodeRef.getSize() ) ;
-                sysPrintDebug( "toArray(): 3 - input data file - Read record " + ii );
+                file.seek( size *  NodeRef.getSize() ) ;
+                NodeRef.setFilePos( size *  NodeRef.getSize() ) ;
+                sysPrintDebug( "toArray(): 3 - input data file - Read record " + size );
                 NodeRef.ReadRec( file );
 
-                String str2 = a[ ii ] [ 0 ]  ;
                 sysPrintDebug( "toArray(): 4 - the value of a[ ii ] [ 0 ] is " +
                                       a[ 0 ] [ 0 ] );
 
                 if ( NodeRef.getRecID() != -1 ) {
-                   a[ iii ] [ 0 ]  =  String.valueOf( NodeRef.getRecID() ) ;
-                   a[ iii ] [ 1 ]  =  NodeRef.getToolType().trim()  ;
-                   a[ iii ] [ 2 ]  =  NodeRef.getBrandName().trim() ;
-                   a[ iii ] [ 3 ]  =  NodeRef.getToolDesc().trim()  ;
-                   a[ iii ] [ 4 ]  =  NodeRef.getPartNumber().trim() ;
-                   a[ iii ] [ 5 ]  =  String.valueOf( NodeRef.getQuantity() )  ;
-                   a[ iii ] [ 6 ]  =  NodeRef.getCost().trim() ;
+                   a[ col ] [ 0 ]  =  String.valueOf( NodeRef.getRecID() ) ;
+                   a[ col ] [ 1 ]  =  NodeRef.getToolType().trim()  ;
+                   a[ col ] [ 2 ]  =  NodeRef.getBrandName().trim() ;
+                   a[ col ] [ 3 ]  =  NodeRef.getToolDesc().trim()  ;
+                   a[ col ] [ 4 ]  =  NodeRef.getPartNumber().trim() ;
+                   a[ col ] [ 5 ]  =  String.valueOf( NodeRef.getQuantity() )  ;
+                   a[ col ] [ 6 ]  =  NodeRef.getCost().trim() ;
 
-                   sysPrintDebug( "toArray(): 5 - 0- " + a[ iii ] [ 0 ] +
-                                    " 1- " + a[ iii ] [ 1 ] +
-                                    " 2- " + a[ iii ] [ 2 ] +
-                                    " 3- " + a[ iii ] [ 3 ] +
-                                    " 4- " + a[ iii ] [ 4 ] +
-                                    " 5- " + a[ iii ] [ 5 ] +
-                                    " 6- " + a[ iii ] [ 6 ]  );
+                   sysPrintDebug( "toArray(): 5 - 0- " + a[ col ] [ 0 ] +
+                                    " 1- " + a[ col ] [ 1 ] +
+                                    " 2- " + a[ col ] [ 2 ] +
+                                    " 3- " + a[ col ] [ 3 ] +
+                                    " 4- " + a[ col ] [ 4 ] +
+                                    " 5- " + a[ col ] [ 5 ] +
+                                    " 6- " + a[ col ] [ 6 ]  );
 
-                   iii++;
+                   col++;
 
                 }
                 else {
-                   sysPrintDebug( "toArray(): 5a the record ID is " + ii ) ;
+                   sysPrintDebug( "toArray(): 5a the record ID is " + size ) ;
                 }
 
-                ii++;
+                size++;
 
-            }  /** End of do-while loop   */
-         }  /** End of outer if   */
+            }
+         }
       }
       catch ( IOException ex ) {
-                sysPrintDebug(  "toArray(): 6 - input data file failure. Index is " +  ii
+                sysPrintDebug(  "toArray(): 6 - input data file failure. Index is " +  size
                 + "\nFilesize is " + fileSize );
       }
 
-      return ii;
+      return size;
    }
 }
