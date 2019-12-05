@@ -68,6 +68,8 @@ public class HardwareStore extends JFrame
                    listButton,   /** list all records */
                    done;         /** quit program */
 
+   private Container c ;
+   private int numEntries = 0 , ZERO;
    private Password pWord;     /** dialog box for password checking */
   // private ListRecs listRecs;    /** dialog box listing all records */
    private UpdateRec update;     /** dialog box for record update */
@@ -407,16 +409,7 @@ public class HardwareStore extends JFrame
                   {"23", "", "", "", "", "", ""}
    } ;
 
-   private Container c ;
-   private int numEntries = 0 , ZERO;
 
-   /** ********************************************************
-    * Method: HardwareStore() constructor initializes the
-    * 1- Menu bar
-    * 2- Tables
-    * 3- Buttons
-    * used to construct the HardwareStore GUI.
-    ************************************************************/
    public HardwareStore()
    {
       super( "Hardware Store: Lawn Mower " );
@@ -456,124 +449,96 @@ public class HardwareStore extends JFrame
    }
 
 
-   /** ************************************************************
-    * setupMenu() is called from the HardwareStore() constructor
-    * setupMenu() is used to create the
-    * 1- Menu Bar
-    * 2- Menu Items
-    ********************************************************/
    public void setupMenu()   {
-      /** Create the menubar */
       menuBar = new JMenuBar();
 
-      /** Add the menubar to the frame */
       setJMenuBar(menuBar);
 
-      /** Create the File menu and add it to the menubar  */
       fileMenu = new JMenu("File");
 
       menuBar.add(fileMenu);
-      /** Add the Exit menuitems */
+
       eMI = new JMenuItem("Exit") ;
       fileMenu.add( eMI );
       eMI.addActionListener( menuHandler );
 
-      /** Create the View menu and add it to the menubar  */
       viewMenu = new JMenu("View");
 
-      /** Add the Lawn Mower menuitems */
       lmMI = new JMenuItem("Lawn Mowers") ;
       viewMenu.add( lmMI );
       lmMI.addActionListener( menuHandler );
 
-      /** Add the Lawn Mower menuitems */
       lmtMI = new JMenuItem("Lawn Mowing Tractors") ;
       viewMenu.add( lmtMI );
       lmtMI.addActionListener( menuHandler );
 
-      /** Add the Hand Drills Tools menuitems */
       hdMI = new JMenuItem("Hand Drills Tools") ;
       viewMenu.add( hdMI );
       hdMI.addActionListener( menuHandler );
 
-      /** Add the Drill Press Power Tools menuitems */
       dpMI = new JMenuItem("Drill Press Power Tools") ;
       viewMenu.add( dpMI );
       dpMI.addActionListener( menuHandler );
 
-      /** Add the Circular Saws  menuitems */
       csMI = new JMenuItem("Circular Saws") ;
       viewMenu.add( csMI );
       csMI.addActionListener( menuHandler );
 
-      /** Add the Hammer menuitems */
       hamMI = new JMenuItem("Hammers") ;
       viewMenu.add( hamMI );
       hamMI.addActionListener( menuHandler );
 
-      /** Add the Table Saws menuitems */
       tabMI = new JMenuItem("Table Saws") ;
       viewMenu.add( tabMI );
       tabMI.addActionListener( menuHandler );
 
-      /** Add the Band Saws menuitems */
       bandMI = new JMenuItem("Band Saws") ;
       viewMenu.add( bandMI );
       bandMI.addActionListener( menuHandler );
 
-      /** Add the Sanders menuitems */
       sandMI = new JMenuItem("Sanders") ;
       viewMenu.add( sandMI );
       sandMI.addActionListener( menuHandler );
 
 
-      /** Add the Stapler menuitems */
       stapMI = new JMenuItem("Staplers") ;
       viewMenu.add( stapMI );
       stapMI.addActionListener( menuHandler );
 
-      /** Add the Wet-Dry Vacs menuitems */
       wdvMI = new JMenuItem("Wet-Dry Vacs") ;
       viewMenu.add( wdvMI );
       wdvMI.addActionListener( menuHandler );
 
-      /** Add the Storage, Chests & Cabinets menuitems */
       sccMI = new JMenuItem("Storage, Chests & Cabinets") ;
       viewMenu.add( sccMI );
       sccMI.addActionListener( menuHandler );
 
       menuBar.add(viewMenu);
-      /** Create the Options menu and add it to the menubar  */
       optionsMenu = new JMenu("Options") ;
 
-      /** Add the List All menuitems */
       listAllMI = new JMenuItem("List All") ;
       optionsMenu.add( listAllMI );
       listAllMI.addActionListener( menuHandler );
       optionsMenu.addSeparator();
 
-      /** Add the Add menuitems */
       addMI = new JMenuItem("Add") ;
       optionsMenu.add( addMI );
       addMI.addActionListener( menuHandler );
 
-      /** Add the Update menuitems */
       updateMI = new JMenuItem("Update") ;
       optionsMenu.add( updateMI );
       updateMI.addActionListener( menuHandler );
       optionsMenu.addSeparator();
 
-      /** Add the Delete menuitems */
       deleteMI = new JMenuItem("Delete") ;
       optionsMenu.add( deleteMI );
       deleteMI.addActionListener( menuHandler );
 
       menuBar.add(optionsMenu);
-
-      /** Create the Tools menu and add it to the menubar  */
+      
       toolsMenu = new JMenu("Tools") ;
       menuBar.add(toolsMenu);
-      /** Add the Tools menuitems */
+
       debugON = new JMenuItem("Debug On") ;
       debugOFF = new JMenuItem("Debug Off") ;
       toolsMenu.add( debugON );
@@ -581,20 +546,18 @@ public class HardwareStore extends JFrame
       debugON.addActionListener( menuHandler );
       debugOFF.addActionListener( menuHandler );
 
-      /** Create the Help menu and add it to the menubar  */
+
       helpMenu = new JMenu("Help") ;
 
-      /** Add the Help HW Store menuitems */
       helpHWMI = new JMenuItem("Help on HW Store") ;
       helpMenu.add( helpHWMI );
       helpHWMI.addActionListener( menuHandler );
 
+      
       menuBar.add(helpMenu);
 
-      /** Create the About menu and add it to the menubar  */
       aboutMenu = new JMenu("About") ;
 
-      /** Add the About Store menuitems */
       aboutHWMI = new JMenuItem("About HW Store") ;
       aboutMenu.add( aboutHWMI );
       aboutHWMI.addActionListener( menuHandler );
@@ -602,29 +565,15 @@ public class HardwareStore extends JFrame
       menuBar.add(aboutMenu);
    }
 
-   /** ********************************************************
-    * Method: setup() is used to
-    * 1- Open the lawnmower.dat file
-    * 2- Call the toArray() method to popualte the JTable with
-    *    the contents of the lawnmower.dat file.
-    *
-    * Called by the HardwareStore() constructor
-    ********************************************************/
    public void setup()   {
-      double loopLimit = 0.0;
-      int ii = 0, iii = 0;
-      data = new Record();
 
       try {
-         /** Divide  the length of the file by the record size to
-          *  determine the number of records in the file
-          */
 
          file = new RandomAccessFile( "lawnmower.dat" , "rw" );
 
          aFile = new File( "lawnmower.dat" ) ;
 
-         numEntries = toArray( file, pData ) ;
+         numEntries = GetContenttoArrayFormat( file, pData ) ;
 
          file.close() ;
       }
@@ -632,27 +581,17 @@ public class HardwareStore extends JFrame
             //part.setText( "Error reading file" );
       }
 
-      /** ****************************************************************
-       * pData contains the data to be loaded into the JTable.
-       * columnNames contains the column names for the table.
-       * 1- Create a new JTable.
-       * 2- Add a mouse listener to the table.
-       * 3- Make the table cells editable.
-       * 4- Add the table to the Frame's center using the Border Layout
-       *    Manager.
-       * 5- Add a scrollpane to the table.
-       *****************************************************************/
       table = new JTable( pData, columnNames );
       table.addMouseListener( new MouseClickedHandler( file, table , pData ) ) ;
       table.setEnabled( true );
 
       c.add( table , BorderLayout.CENTER) ;
       c.add( new JScrollPane ( table ) );
-      /** Make the Frame visiable */
+
       cancel  = new JButton( "Cancel" ) ;
       refresh = new JButton( "Refresh" ) ;
       buttonPanel = new JPanel() ;
-      //buttonPanel.add( refresh ) ;
+
       buttonPanel.add( cancel ) ;
       c.add( buttonPanel , BorderLayout.SOUTH) ;
 
@@ -660,12 +599,12 @@ public class HardwareStore extends JFrame
       cancel.addActionListener( this );
 
       /** Create dialog boxes */
-      update = new UpdateRec( hws, file, pData , -1);
-      deleteRec = new DeleteRec( hws, file, table, pData );
+      update = new UpdateRec( main.hws, file, pData , -1);
+      deleteRec = new DeleteRec( main.hws, file, table, pData );
       /** Allocate pWord last; otherwise  the update,
        *  newRec and deleteRec references will be null
        *  when the PassWrod class attempts to use them.*/
-      pWord = new PassWord( this  ) ;
+      pWord = new Password( this  ) ;
    }
 
    /** ****************************************************************
@@ -685,7 +624,7 @@ public class HardwareStore extends JFrame
 
       aFile = new File( fileDat ) ;
 
-      sysPrint("initRecord(): 1a - the value of fileData is " + aFile );
+      sysPrintDebug("initRecord(): 1a - the value of fileData is " + aFile );
 
       try {
          /** Open the fileDat file in RW mode.
@@ -693,34 +632,34 @@ public class HardwareStore extends JFrame
           *  and initialize it to 250 empty records.
           */
 
-         sysPrint("initTire(): 1ab - checking to see if " + aFile + " exist." );
+         sysPrintDebug("initTire(): 1ab - checking to see if " + aFile + " exist." );
          if ( !aFile.exists() ) {
 
-            sysPrint("initTire(): 1b - " + aFile + " does not exist." );
+            sysPrintDebug("initTire(): 1b - " + aFile + " does not exist." );
 
             file = new RandomAccessFile( aFile , "rw" );
             data = new Record() ;
 
             for ( int ii = 0 ; ii < loopCtl ; ii++ ) {
                data.setRecID( Integer.parseInt( FileRecord[ ii ][ 0 ] ) ) ;
-               sysPrint("initTire(): 1c - The value of record ID is " + data.getRecID() ) ;
+               sysPrintDebug("initTire(): 1c - The value of record ID is " + data.getRecID() ) ;
                data.setToolType( FileRecord[ ii ][ 1 ] ) ;
-               sysPrint("initTire(): 1cb - The length of ToolType is " + data.getToolType().length() ) ;
+               sysPrintDebug("initTire(): 1cb - The length of ToolType is " + data.getToolType().length() ) ;
                data.setBrandName( FileRecord[ ii ][ 2 ] ) ;
                data.setToolDesc( FileRecord[ ii ][ 3 ] ) ;
-               sysPrint("initTire(): 1cc - The length of ToolDesc is " + data.getToolDesc().length() ) ;
+               sysPrintDebug("initTire(): 1cc - The length of ToolDesc is " + data.getToolDesc().length() ) ;
                data.setPartNumber( FileRecord[ ii ][ 4 ] ) ;
                data.setQuantity( Integer.parseInt( FileRecord[ ii ][ 5 ] ) ) ;
                data.setCost( FileRecord[ ii ][ 6 ] ) ;
 
-               sysPrint("initTire(): 1d - Calling Record method write() during initialization. " + ii );
+               sysPrintDebug("initTire(): 1d - Calling Record method write() during initialization. " + ii );
                file.seek( ii * Record.getSize() );
                data.write( file );
 
             }
          }
          else {
-            sysPrint("initTire(): 1e - " + fileDat + " exists." );
+            sysPrintDebug("initTire(): 1e - " + fileDat + " exists." );
             file = new RandomAccessFile( aFile , "rw" );
          }
 
@@ -733,18 +672,7 @@ public class HardwareStore extends JFrame
       }
    }
 
-   /** *************************************************************
-    * Method: display() is used to display the contents of the
-    *         specified table in the passed parameter. This method
-    *         uses the passed parameter to determine
-    *         1- Which table to display
-    *         2- Whether the table exists
-    *         3- If it exists, the table is opened and its
-    *            contents are displayed in a JTable.
-    *
-    * Called from the actionPerformed() method of the MenuHandler class
-    *********************************************************************/
-   public void display( String str ) {
+   public void displayContent( String str ) {
 
       String  df = null ,  title = null ;
 
@@ -805,10 +733,10 @@ public class HardwareStore extends JFrame
           *  and initialize it to 250 empty records.
           */
 
-         sysPrint("display(): 1a - checking to see if " + df + " exists." );
+         sysPrintDebug("display(): 1a - checking to see if " + df + " exists." );
          if ( !aFile.exists() ) {
 
-            sysPrint("display(): 1b - " + df + " does not exist." );
+            sysPrintDebug("display(): 1b - " + df + " does not exist." );
 
          }
          else {
@@ -850,8 +778,8 @@ public class HardwareStore extends JFrame
          a[ ii ][ 5 ] = "" ;
          a[ ii ][ 6 ] = "" ;
       }
-      int entries = toArray( file , a );
-      sysPrint("Redisplay(): 1  - The number of entries is " + entries);
+      int entries = GetContenttoArrayFormat( file , a );
+      sysPrintDebug("Redisplay(): 1  - The number of entries is " + entries);
       setEntries( entries ) ;
       c.remove( table ) ;
       table = new JTable( a , columnNames ) ;
@@ -861,15 +789,10 @@ public class HardwareStore extends JFrame
       c.validate();
    }
 
-   /** *******************************************************************
-    *  Method: actionPerformed() - This is the event handler that responds
-    *  to the the cancel button  on the main frame.
-    *
-    * *********************************************************************/
    public void actionPerformed( ActionEvent e )   {
 
       if ( e.getSource() == refresh  )  {
-         sysPrint( "\nThe Refresh button was pressed. " ) ;
+         sysPrintDebug( "\nThe Refresh button was pressed. " ) ;
          Container cc = getContentPane() ;
 
          table = new JTable( pData, columnNames );
@@ -879,12 +802,6 @@ public class HardwareStore extends JFrame
          cleanup();
    }
 
-   /** ****************************************************************
-    *  Method: cleanup() -This is the cleanup method that is used to close
-    *  the hardware.dat file and exit the application.
-    *
-    *  Called from the actionPerformed() method
-    *********************************************************************/
    public void cleanup() {
       try {
          file.close();
@@ -897,75 +814,39 @@ public class HardwareStore extends JFrame
       System.exit( 0 );
    }
 
-   /** ***************************************************************
-    *  Method: displayDeleteDialog()
-    *
-    * Called from the actionPerformed() method of the PassWord class
-    ******************************************************************/
    public void displayDeleteDialog() {
-      sysPrint ("The Delete Record Dialog was made visible.\n") ;
+      sysPrintDebug ("The Delete Record Dialog was made visible.\n") ;
       deleteRec.setVisible( true );
    }
 
-   /** ********************************************************
-    *  Method: displayUpdateDialog()
-    *
-    * Called from the actionPerformed() method of the PassWord class
-    ******************************************************************/
    public void displayUpdateDialog() {
-      sysPrint ("The Update Record Dialog was made visible.\n") ;
+      sysPrintDebug ("The Update Record Dialog was made visible.\n") ;
       JOptionPane.showMessageDialog(null,
                     "Enter the record ID to be updated and press enter.",
                     "Update Record", JOptionPane.INFORMATION_MESSAGE) ;
-      update = new UpdateRec( hws, file, pData , -1);
+      update = new UpdateRec( main.hws, file, pData , -1);
       update.setVisible( true );
    }
 
-   /** ********************************************************
-    *  Method: displayAddDialog()
-    *
-    * Called from the actionPerformed() method of the PassWord class
-    ******************************************************************/
    public void displayAddDialog() {
-      sysPrint ("The New/Add Record Dialog was made visible.\n") ;
-      newRec = new NewRec( hws, file, table, pData );
+      sysPrintDebug ("The New/Add Record Dialog was made visible.\n") ;
+      newRec = new NewRec( main.hws, file, table, pData );
       newRec.setVisible( true );
    }
 
-   /** ********************************************************
-    *  Method: setEntries() is called to set the number of current
-    *          entries in the pData array.
-    ********************************************************/
    public void setEntries( int ent )   {
       numEntries = ent ;
    }
 
-   /** ********************************************************
-    *  Method: getPData() returns a specific row and column
-    *
-    *  This method is no longer used
-    ********************************************************/
-   public String getPData( int ii , int iii )   {
-      return pData[ ii ] [ iii ] ;
+   public String getColumnAndRowData( int col , int row )   {
+      return pData[ col ] [ row ] ;
    }
 
-   /** ********************************************************
-    *  Method: getEntries() returns the number of current entries
-    *          in the pData array.
-    *
-    * Called from
-    * 1- actionPerformed() method of the NewRec class
-    * 2- actionPerformed() method of the DeleteRec class
-    ********************************************************/
    public int getEntries(  )   {
       return numEntries  ;
    }
 
-   /** ********************************************************
-    *  Method: sysPrint() is a debugging aid that is used to print
-    *          information to the screen.
-    ********************************************************/
-   public void sysPrint( String str  )   {
+   public void sysPrintDebug( String str  )   {
       if ( myDebug ) {
          System.out.println( str );
       }
@@ -982,37 +863,33 @@ public class HardwareStore extends JFrame
     * 1- Setup method of the HardwareStore class
     * 2- Redisplay() method
     ****************************************************************** */
-   public int toArray( RandomAccessFile file, String a[][] ) {
+   public int GetContenttoArrayFormat( RandomAccessFile file, String a[][] ) {
 
-      Record NodeRef = new Record() ,
-             PreviousNode  = null ;
+      Record NodeRef = new Record() , PreviousNode  = null ;
+      
       int ii = 0 , iii = 0 , fileSize = 0;
 
       try {
          fileSize = (int) file.length() / Record.getSize() ;
-         sysPrint("toArray(): 1 - The size of the file is " + fileSize ) ;
+         sysPrintDebug("toArray(): 1 - The size of the file is " + fileSize ) ;
          /** If the file is empty, do nothing.  */
          if (  fileSize > ZERO  ) {
-
-	    /** *************************************
-             *
-             * *************************************** */
 
              NodeRef.setFileLen( file.length() ) ;
 
 
              while ( ii < fileSize )  {
-                sysPrint( "toArray(): 2 - NodeRef.getRecID is "
+                sysPrintDebug( "toArray(): 2 - NodeRef.getRecID is "
                                       + NodeRef.getRecID() );
 
                 file.seek( 0 ) ;
                 file.seek( ii *  NodeRef.getSize() ) ;
                 NodeRef.setFilePos( ii *  NodeRef.getSize() ) ;
-                sysPrint( "toArray(): 3 - input data file - Read record " + ii );
+                sysPrintDebug( "toArray(): 3 - input data file - Read record " + ii );
                 NodeRef.ReadRec( file );
 
                 String str2 = a[ ii ] [ 0 ]  ;
-                sysPrint( "toArray(): 4 - the value of a[ ii ] [ 0 ] is " +
+                sysPrintDebug( "toArray(): 4 - the value of a[ ii ] [ 0 ] is " +
                                       a[ 0 ] [ 0 ] );
 
                 if ( NodeRef.getRecID() != -1 ) {
@@ -1024,7 +901,7 @@ public class HardwareStore extends JFrame
                    a[ iii ] [ 5 ]  =  String.valueOf( NodeRef.getQuantity() )  ;
                    a[ iii ] [ 6 ]  =  NodeRef.getCost().trim() ;
 
-                   sysPrint( "toArray(): 5 - 0- " + a[ iii ] [ 0 ] +
+                   sysPrintDebug( "toArray(): 5 - 0- " + a[ iii ] [ 0 ] +
                                     " 1- " + a[ iii ] [ 1 ] +
                                     " 2- " + a[ iii ] [ 2 ] +
                                     " 3- " + a[ iii ] [ 3 ] +
@@ -1036,7 +913,7 @@ public class HardwareStore extends JFrame
 
                 }
                 else {
-                   sysPrint( "toArray(): 5a the record ID is " + ii ) ;
+                   sysPrintDebug( "toArray(): 5a the record ID is " + ii ) ;
                 }
 
                 ii++;
@@ -1045,19 +922,10 @@ public class HardwareStore extends JFrame
          }  /** End of outer if   */
       }
       catch ( IOException ex ) {
-                sysPrint(  "toArray(): 6 - input data file failure. Index is " +  ii
+                sysPrintDebug(  "toArray(): 6 - input data file failure. Index is " +  ii
                 + "\nFilesize is " + fileSize );
       }
 
-      return ii ;
-
+      return ii;
    }
-
-
-   /** ********************************************************
-    *  Method: main() is the entry point that Java call on the
-    *          start of this program.
-    ********************************************************/
-
 }
-

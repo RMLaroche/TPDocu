@@ -167,9 +167,9 @@ public class NewRec extends Dialog  implements ActionListener {
 
                 // Account for index starting at 0 and for the next slot
                 theRecID =  hwStore.getEntries()  ;
-                hwStore.sysPrint("NewRec 1: The numbers of entries is " + (theRecID - 1) ) ;
+                hwStore.sysPrintDebug("NewRec 1: The numbers of entries is " + (theRecID - 1) ) ;
 
-                hwStore.sysPrint("NewRec 2: A new record is being added at " +
+                hwStore.sysPrintDebug("NewRec 2: A new record is being added at " +
                    theRecID   );
                 pData[ theRecID  ] [ 0 ] =  Integer.toString( data.getRecID() ) ;
                 pData[ theRecID  ] [ 1 ] =  data.getToolType().trim() ;
