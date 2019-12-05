@@ -15,93 +15,93 @@ public class MenuHandler implements ActionListener {
           cleanup();
        }
        else if ( e.getSource() == lmMI ) {
-          sysPrint ( "The Lawn Mower menu Item was selected.\n" );
+          sysPrintDebug ( "The Lawn Mower menu Item was selected.\n" );
 
-          display( "Lawn Mowers" ) ;
+          displayContent( "Lawn Mowers" ) ;
        }
        else if ( e.getSource() == lmtMI ) {
-          sysPrint ( "The Lawn Mower Tractor menu Item was selected.\n" );
+          sysPrintDebug ( "The Lawn Mower Tractor menu Item was selected.\n" );
 
-          display( "Lawn Tractor Mowers" ) ;
+          displayContent( "Lawn Tractor Mowers" ) ;
        }
        else if ( e.getSource() == hdMI ) {
-          sysPrint ( "The Hand Drill Tools menu Item was selected.\n" );
+          sysPrintDebug ( "The Hand Drill Tools menu Item was selected.\n" );
 
-          display( "Hand Drill Tools" ) ;
+          displayContent( "Hand Drill Tools" ) ;
        }
        else if ( e.getSource() == dpMI ) {
-          sysPrint ("The Drill Press Power Tools menu Item was selected.\n" );
+          sysPrintDebug ("The Drill Press Power Tools menu Item was selected.\n" );
 
-          display( "Drill Press Power Tools" ) ;
+          displayContent( "Drill Press Power Tools" ) ;
        }
        else if ( e.getSource() == csMI ) {
-          sysPrint ("The Circular Saws Tools menu Item was selected.\n" );
+          sysPrintDebug ("The Circular Saws Tools menu Item was selected.\n" );
 
-          display( "Circular Saws" ) ;
+          displayContent( "Circular Saws" ) ;
        }
        else if ( e.getSource() == hamMI ) {
-          sysPrint ("The Hammer menu Item was selected.\n" );
+          sysPrintDebug ("The Hammer menu Item was selected.\n" );
 
-          display( "Hammers" ) ;
+          displayContent( "Hammers" ) ;
        }
        else if ( e.getSource() == tabMI ) {
-          sysPrint ("The Table Saws menu Item was selected.\n" );
+          sysPrintDebug ("The Table Saws menu Item was selected.\n" );
 
-          display( "Table Saws" ) ;
+          displayContent( "Table Saws" ) ;
        }
        else if ( e.getSource() == bandMI ) {
-          sysPrint ("The Band Saws menu Item was selected.\n" );
+          sysPrintDebug ("The Band Saws menu Item was selected.\n" );
 
-          display( "Band Saws" ) ;
+          displayContent( "Band Saws" ) ;
        }
        else if ( e.getSource() ==  sandMI ) {
-          sysPrint ("The Sanders menu Item was selected.\n" );
+          sysPrintDebug ("The Sanders menu Item was selected.\n" );
 
-          display( "Sanders" ) ;
+          displayContent( "Sanders" ) ;
        }
        else if ( e.getSource() == stapMI ) {
-          sysPrint ("The Staplers menu Item was selected.\n" );
+          sysPrintDebug ("The Staplers menu Item was selected.\n" );
 
-          display( "Staplers" ) ;
+          displayContent( "Staplers" ) ;
        }
        else if ( e.getSource() == wdvMI ) {
-          sysPrint ("The Wet-Dry Vacs menu Item was selected.\n" );
+          sysPrintDebug ("The Wet-Dry Vacs menu Item was selected.\n" );
          // ListRecs BPTRecs = new ListRecs( hws , "WDV", "Wet-Dry Vacs" );
        }
        else if ( e.getSource() == sccMI ) {
-          sysPrint ("The Storage, Chests & Cabinets menu Item was selected.\n" );
+          sysPrintDebug ("The Storage, Chests & Cabinets menu Item was selected.\n" );
           //ListRecs BPTRecs = new ListRecs( hws , "SCC", "Storage, Chests & Cabinets" );
        }
        else if ( e.getSource() == deleteMI ) {
-          sysPrint ("The Delete Record Dialog was made visible.\n") ;
+          sysPrintDebug ("The Delete Record Dialog was made visible.\n") ;
           //DeleteRec( HardwareStore hw_store,  RandomAccessFile f,
                 // JTable tab, String p_Data[] []  )
           deleteRec = new DeleteRec( hws, file, table, pData );
           deleteRec.setVisible( true );
        }
        else if ( e.getSource() == addMI ) {
-          sysPrint ("The Add menu Item was selected.\n" );
+          sysPrintDebug ("The Add menu Item was selected.\n" );
           pWord.displayDialog( "add" ) ;
        }
        else if ( e.getSource() == updateMI ) {
-          sysPrint ("The Update menu Item was selected.\n" );
+          sysPrintDebug ("The Update menu Item was selected.\n" );
           update = new UpdateRec( hws, file,  pData, -1 );
           update.setVisible( true );
        }
        else if ( e.getSource() == listAllMI ) {
-          sysPrint ("The List All menu Item was selected.\n" );
+          sysPrintDebug ("The List All menu Item was selected.\n" );
           //listRecs.setVisible( true );
        }
        else if ( e.getSource() == debugON ) {
           myDebug = true ;
-          sysPrint ("Debugging for this execution is turned on.\n" );
+          sysPrintDebug ("Debugging for this execution is turned on.\n" );
        }
        else if ( e.getSource() == debugOFF ) {
-          sysPrint ("Debugging for this execution is turned off.\n" );
+          sysPrintDebug ("Debugging for this execution is turned off.\n" );
           myDebug = false ;
        }
        else if ( e.getSource() == helpHWMI ) {
-          sysPrint ("The Help menu Item was selected.\n" );
+          sysPrintDebug ("The Help menu Item was selected.\n" );
           File hd = new File("HW_Tutorial.html");
           //File net = new File("Netscp.exe");
           //System.out.println( "the path for help_doc is " + hd.getAbsolutePath() );
@@ -116,11 +116,11 @@ public class MenuHandler implements ActionListener {
 
              Process child = rt.exec( callAndArgs );
              child.waitFor();
-             sysPrint ("Process exit code is: " +
+             sysPrintDebug ("Process exit code is: " +
                                child.exitValue());
           }
           catch(IOException e2) {
-             sysPrint (
+             sysPrintDebug (
                 "IOException starting process!");
           }
           catch(InterruptedException e3) {
@@ -129,14 +129,14 @@ public class MenuHandler implements ActionListener {
           }
        }
        else if ( e.getSource() == aboutHWMI ) {
-          sysPrint ("The About menu Item was selected.\n" );
+          sysPrintDebug ("The About menu Item was selected.\n" );
           Runtime rt = Runtime.getRuntime();
           String[] callAndArgs = { "c:\\Program Files\\Internet Explorer\\IEXPLORE.exe" ,
                          "http://www.sumtotalz.com/TotalAppsWorks/ProgrammingResource.html" };
           try {
              Process child = rt.exec(callAndArgs);
              child.waitFor();
-             sysPrint ("Process exit code is: " +
+             sysPrintDebug ("Process exit code is: " +
                                child.exitValue());
           }
           catch(IOException e2) {
