@@ -55,16 +55,6 @@ public class Record  {
 
    /** *******************************************************************
     *  Method: ReadRec() Reads a record from the specified RandomAccessFile.
-    * 1- Read the first integer
-    * 2- Read the second integer
-    * 3- Read characters one at a time until we reach a string of
-    *    ';;;'. This indicates that we have reached the end of the
-    *    character string for this particular record.
-    * 4- Load the resulting string into a StringTokenizer object.
-    * 5- We are looking for 7 tokens, so if the token count is
-    *    greater than 4, we will tokenize the string.
-    * 6- The tokens are loaded into a string array and then into the
-    *    class variables.
     ********************************************************** */
 
    public void ReadRec( RandomAccessFile file ) throws IOException
@@ -112,9 +102,7 @@ public class Record  {
 
       tokens = new StringTokenizer( str , ";;" ) ;
 
-
       recordTokens = new String[ 7 ] ;
-
 
       if ( tokens.countTokens() >= 4 )   {
          sysPrint(  "ReadRec() 5: The number of tokens is " +
@@ -126,7 +114,6 @@ public class Record  {
             recordTokens[ ii ] = tokens.nextToken().toString() ;
             ii++ ;
          }
-
 
          toolType  = new String( recordTokens[ 2 ] ) ;
          brandName = new String( recordTokens[ 3 ] ) ;
@@ -146,7 +133,6 @@ public class Record  {
     public StringBuffer fill ( String str, StringBuffer buf , int len) {
        String strTwo = new String( "                     "  +
            "                                             " ) ;
-
        if ( str != null ) {
           buf.setLength( len );
           buf = new StringBuffer( str + strTwo );
@@ -166,9 +152,6 @@ public class Record  {
 
    /** ************************************************************
     *  write() Writes a record to the specified RandomAccessFile.
-    *          1- First it writes a int (recid) to the output file
-    *          2- Next it writes the quantity as an int.
-    *          3- Then it writes the remaing record as a string.
     ************************************************************** */
    public void write( RandomAccessFile file ) throws IOException
    {
@@ -199,7 +182,6 @@ public class Record  {
 
    }
 
-
    /** ********************************************************
     * Method: writeInteger() is used to wite an integer to the
     *         randomaccess file.
@@ -210,105 +192,38 @@ public class Record  {
       file.writeInt( a );
    }
 
-
-   /** ********************************************************
-    * Method: getRecID() is used to obtain the record ID.
-    ********************************************************/
    public int getRecID() { return recID; }
 
-
-   /** ********************************************************
-    * Method: getToolType() is used to obtain the tool type.
-    ********************************************************/
    public String getToolType() { return toolType.trim(); }
 
-   /** ********************************************************
-    * Method: getToolDesc() is used to obtain the description of
-    *         the tool.
-    ********************************************************/
    public String getToolDesc() { return toolDesc.trim(); }
 
-   /** ********************************************************
-    * Method: getPartNumber() is used to obtain the Part Number
-    *         value currently in the record.
-    ********************************************************/
    public String getPartNumber() { return partNum.trim(); }
 
-   /** ********************************************************
-    * Method: getQuantity() is used to obtain the value of the
-    *         quantity currently in the record.
-    ********************************************************/
    public int getQuantity() { return quantity; }
 
-   /** ********************************************************
-    * Method: getBrandName() is used to obtain the value of the
-    *         current value of Brand Name from the record.
-    ********************************************************/
    public String getBrandName() { return brandName.trim(); }
 
-   /** ********************************************************
-    * Method: getCost() is used to obtain the the value of the
-    *         current value of cost  from the record.
-    ********************************************************/
    public String getCost() { return cost.trim(); }
 
-   /** ********************************************************
-    * Method: setToolType() is used to set the value of the
-    *         current value of Tool Type from the record.
-    ********************************************************/
    public void setToolType( String f ) { toolType = f; }
 
-   /** ********************************************************
-    * Method: setRecID() is used to set the value of the of the
-    *         record ID in the record.
-    ********************************************************/
    public void setRecID( int p ) { recID = p; }
 
-   /** ********************************************************
-    * Method: setCost() is used to set the value of the of the
-    *         cost in the record.
-    ********************************************************/
    public void setCost( String f ) { cost = f; }
 
-   /** ********************************************************
-    * Method: setBrandName() is used to set the value of the
-    *         brand name in the record.
-    ********************************************************/
    public void setBrandName( String f ) { brandName = f; }
 
-   /** *************************************************************
-    * Method: setToolDesc() is used to set the value of the tool
-    *         description in the record.
-    ********************************************************/
    public void setToolDesc( String f ) { toolDesc = f; }
 
-   /** ********************************************************
-    * Method: setPartNumber() is used to set the part number
-    *         in the record.
-    ********************************************************/
    public void setPartNumber( String f ) { partNum = f; }
 
-   /** ********************************************************
-    * Method: setQuantity() is used to set the value of the
-    *         quantity in the record.
-    ********************************************************/
    public void setQuantity( int q ) { quantity = q; }
 
-   /** ********************************************************
-    * Method: setFilePos() is used to set the current position
-    *         of the cursor in the file.
-    ********************************************************/
    public void setFilePos( long fp ) { filePos = fp; }
 
-   /** *******************************************************************
-    * Method: setFileLen() is used to set the current length of the file.
-    **********************************************************************/
    public void setFileLen( long fl ) { fileLen = fl; }
 
-   /** ********************************************************
-    * Method: sysPrint() is a debugging aid that is used to print
-    *          information to the screen.
-    ********************************************************/
    public void sysPrint( String str  )   {
       if ( myDebug ) {
          System.out.println( str );
