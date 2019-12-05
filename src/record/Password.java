@@ -27,7 +27,7 @@ public class Password extends Dialog implements ActionListener {
 	private String whichDialog;
 
 	/**
-	 * ******************************************************** Method: PassWord()
+	 * ********************************************************
 	 * constructor is used to create the Password dialoog's 1- Labels 2- Text fields
 	 * 3- Buttons 4- Panels
 	 ********************************************************/
@@ -36,38 +36,30 @@ public class Password extends Dialog implements ActionListener {
 
 		hwStore = hw_Store;
 
-		/** Create the Enter and Cancel Buttons */
 		enter = new JButton("Enter");
 		cancel = new JButton("Cancel");
 
-		/** Create the buttonPanel and the mainPanel */
 		buttonPanel = new JPanel();
 		mainPanel = new JPanel();
 
-		/** declare the GridLayout manager for the mainPanel */
 		mainPanel.setLayout(new GridLayout(3, 2));
 		add(mainPanel, BorderLayout.CENTER);
 
-		/** Create the text fields */
 		userID = new JTextField(10);
 		password = new JPasswordField(10);
 
-		/** Create the labels */
 		userIDLabel = new JLabel("Enter your user ID");
 		passwordLabel = new JLabel("Enter your user password");
 
-		/** add the labels and text fields to the main panel */
 		mainPanel.add(userIDLabel);
 		mainPanel.add(userID);
 		mainPanel.add(passwordLabel);
 		mainPanel.add(password);
 
-		/** add the buttons to the button panel */
 		buttonPanel.add(enter);
 		buttonPanel.add(cancel);
 		add(buttonPanel, BorderLayout.SOUTH);
 
-		/** add the actionlisteners to the buttons */
 		enter.addActionListener(this);
 		cancel.addActionListener(this);
 
@@ -83,12 +75,6 @@ public class Password extends Dialog implements ActionListener {
 	 ****************************************************************/
 	public void displayDialog(String which_Dialog) {
 		whichDialog = which_Dialog;
-
-		/**
-		 * set userid and password In a real application, the following two lines are
-		 * not used. The dialog interrogates the user for an authorized userID and
-		 * password. This information is preset in this case for convenience.
-		 */
 		userID.setText("admin");
 		password.setText("hwstore");
 
@@ -138,9 +124,6 @@ public class Password extends Dialog implements ActionListener {
 		clear();
 	}
 
-	/**
-	 * ******************************************************** Method: clear()
-	 ********************************************************/
 	private void clear() {
 		setVisible(false);
 		return;
