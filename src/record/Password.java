@@ -28,8 +28,8 @@ public class Password extends Dialog implements ActionListener {
 
 	/**
 	 * ********************************************************
-	 * constructor is used to create the Password dialoog's 1- Labels 2- Text fields
-	 * 3- Buttons 4- Panels
+	 * constructor is used to create the Password dialoog's Labels 
+	 *  Text fields, Buttons, and Panels
 	 ********************************************************/
 	public Password(HardwareStore hw_Store) {
 		super(new Frame(), "Password Check", true);
@@ -68,8 +68,8 @@ public class Password extends Dialog implements ActionListener {
 	}
 
 	/**
-	 * ************************************************************** Method:
-	 * displayDialog () is used to display the dialog that checks the userID and
+	 * **************************************************************
+	 *  Method displayDialog () is used to display the dialog that checks the userID and
 	 * password that allows the user to add, update, delete hardware items for the
 	 * various tables.
 	 ****************************************************************/
@@ -82,7 +82,8 @@ public class Password extends Dialog implements ActionListener {
 	}
 
 	/**
-	 * ****************************************************************** Method:
+	 * ****************************************************************** 
+	 * Method:
 	 * actionPerformed() method responds to the enter or cancel button being pressed
 	 * on the Password dialog.
 	 *********************************************************************/
