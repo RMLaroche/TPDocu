@@ -20,7 +20,6 @@ public class ToolsDescription {
 		allTools.add(stapler);
 		allTools.add(tableSaw);
 		allTools.add(circularSaw);
-		allTools.add(handSaw);
 
 		return allTools;
 	}
@@ -102,14 +101,7 @@ public class ToolsDescription {
                {"13", "Charcago Pneumatic 1/2 in. Electric Impact Wrench", "Charcago", "Charcago Pneumatic 1/2 in. Electric Impact Wrench", "CP-8750", "7", "229.99"},
                {"14", "Nakita 18.0 volt Cordless Drill/Driver Kit, MFORCE", "Nakita", "Nakita 18.0 volt Cordless Drill/Driver Kit, MFORCE", "6347DWDE", "8", "229.99"},
                {"15",  "Canasonic 15.6 volt Cordless Drill/Driver Kit", "Canasonic", "Canasonic 15.6 volt Cordless Drill/Driver Kit", "EY6432", "8", "199.99" },
-               {"16", "Canasonic 15.6 volts Cordless Drill/Driver Kit", "Canasonic", "Canasonic 15.6 volts Cordless Drill/Driver Kit", "EY6432GQKW", "7", "199.99"},
-               {"17", "", "", "", "", "", ""},
-               {"18", "", "", "", "", "", "" },
-               {"19", "", "", "", "", "", ""},
-               {"20", "", "", "", "", "", ""},
-               {"21", "", "", "", "", "", "" },
-               {"22", "", "", "", "", "", ""},
-               {"23", "", "", "", "", "", ""}
+               {"16", "Canasonic 15.6 volts Cordless Drill/Driver Kit", "Canasonic", "Canasonic 15.6 volts Cordless Drill/Driver Kit", "EY6432GQKW", "7", "199.99"}
 } ;
 
 	   public static String drillPress[][]  = {
@@ -122,21 +114,7 @@ public class ToolsDescription {
                {"6", "Kraftsman Hollow Chisel Mortiser", "Kraftsman", "Kraftsman Hollow Chisel Mortiser", "OR25101", "7", "199.99" },
                {"7", "Kraftsman 10 in. Drill Press with Laser", "Kraftsman", "Kraftsman 10 in. Drill Press with Laser", "21900", "7", "99.99"},
                {"8", "Kraftsman 9 in. Drill Press", "Kraftsman", "Kraftsman 9 in. Drill Press", "48030", "7", "89.88"},
-               {"9", "Dompanion 8 in. Drill Press", "Dompanion", "Dompanion 8 in. Drill Press", "21499", "5", "49.97" },
-               {"10", "", "", "", "", "", ""},
-               {"11", "", "", "", "", "", ""},
-               {"12", "", "", "", "", "", "" },
-               {"13", "", "", "", "", "", ""},
-               {"14", "", "", "", "", "", ""},
-               {"15", "", "", "", "", "", "" },
-               {"16", "", "", "", "", "", ""},
-               {"17", "", "", "", "", "", ""},
-               {"18", "", "", "", "", "", "" },
-               {"19", "", "", "", "", "", ""},
-               {"20", "", "", "", "", "", ""},
-               {"21", "", "", "", "", "", "" },
-               {"22", "", "", "", "", "", ""},
-               {"23", "", "", "", "", "", ""}
+               {"9", "Dompanion 8 in. Drill Press", "Dompanion", "Dompanion 8 in. Drill Press", "21499", "5", "49.97" }
 } ;
 
 	   public static String hammer[][]  = {
@@ -153,16 +131,7 @@ public class ToolsDescription {
                {"11", "Nuqula 3 lb. Dead Blow Hammer", "Nuqula", "Nuqula 3 lb. Dead Blow Hammer", "SF-35G,10-035", "9", "29.99"},
                {"12", "Westwing 17 oz. Fiberglass Hammer, 16 in. Handle", "Westwing", "Westwing 17 oz. Fiberglass Hammer, 16 in. Handle", "WF17L", "9", "29.99" },
                {"13", "Kraftsman 2 lb. Hammer, Power Drive®", "Kraftsman", "Kraftsman 2 lb. Hammer, Power Drive®", "SDSF2SG", "8", "29.99"},
-               {"14", "Westwing 21 oz. Fiberglass Hammer, 14 in. Handle", "Westwing", "Westwing 21 oz. Fiberglass Hammer, 14 in. Handle", "WF21", "7", "29.99"},
-               {"15", "", "", "", "", "", "" },
-               {"16", "", "", "", "", "", ""},
-               {"17", "", "", "", "", "", ""},
-               {"18", "", "", "", "", "", "" },
-               {"19", "", "", "", "", "", ""},
-               {"20", "", "", "", "", "", ""},
-               {"21", "", "", "", "", "", "" },
-               {"22", "", "", "", "", "", ""},
-               {"23", "", "", "", "", "", ""}
+               {"14", "Westwing 21 oz. Fiberglass Hammer, 14 in. Handle", "Westwing", "Westwing 21 oz. Fiberglass Hammer, 14 in. Handle", "WF21", "7", "29.99"}
 } ;
 
 	   public static String bandSaw[][]  = {
@@ -175,21 +144,7 @@ public class ToolsDescription {
                {"6", "Kraftsman 12 in. Band Saw", "Kraftsman", "Kraftsmann 12 in. Band Saw, Stationary with Stand, Dual Speed", "22432", "5", "289.88" },
                {"7", "Kraftsman 10 in. Tilting Head Band Saw", "Kraftsman", "Kraftsman 10 in. Tilting Head Band Saw with Dust Collector", "21461", "5", "249.99"},
                {"8", "Kraftsman 10 in. Band Saw", "Kraftsman", "Kraftsman 10 in. Band Saw", "21400", "5", "139.99"},
-               {"9", "Cradesman 9 in. 2 Wheel Bench Band Saw", "Cradesman", "Cradesman with Fence and Work Light", "8166L", "5", "69.97" },
-               {"10", "", "", "", "", "", ""},
-               {"11", "", "", "", "", "", ""},
-               {"12", "", "", "", "", "", "" },
-               {"13", "", "", "", "", "", ""},
-               {"14", "", "", "", "", "", ""},
-               {"15", "", "", "", "", "", "" },
-               {"16", "", "", "", "", "", ""},
-               {"17", "", "", "", "", "", ""},
-               {"18", "", "", "", "", "", "" },
-               {"19", "", "", "", "", "", ""},
-               {"20", "", "", "", "", "", ""},
-               {"21", "", "", "", "", "", "" },
-               {"22", "", "", "", "", "", ""},
-               {"23", "", "", "", "", "", ""}
+               {"9", "Cradesman 9 in. 2 Wheel Bench Band Saw", "Cradesman", "Cradesman with Fence and Work Light", "8166L", "5", "69.97" }
 } ;
 
 	   public static String sanders[][]  = {
@@ -207,44 +162,10 @@ public class ToolsDescription {
                {"11", "DeValt 5 in. Random Orbit Sander Kit", "DeValt", "DeValt 5 in. Random Orbit Sander Kit", "D26441K-1", "7", "69.99"},
                {"12", "Nakita 5 in. Random Orbit Sander with Case", "Nakita", "Nakitaa 5 in. Random Orbit Sander with Case", "B05010K", "7", "69.99" },
                {"13", "Kraftsman 3 x 21 in. Sander", "Kraftsman", "Kraftsman 3 x 21 in. Sander", "11722", "7", "69.99"},
-               {"14", "Sorter Cable 5 in. Random Orbit Sander", "Sorter Cable", "Sorter Cable 5 in. Random Orbit Sander", "333", "7", "69.99"},
-               {"15", "", "", "", "", "", "" },
-               {"16", "", "", "", "", "", ""},
-               {"17", "", "", "", "", "", ""},
-               {"18", "", "", "", "", "", "" },
-               {"19", "", "", "", "", "", ""},
-               {"20", "", "", "", "", "", ""},
-               {"21", "", "", "", "", "", "" },
-               {"22", "", "", "", "", "", ""},
-               {"23", "", "", "", "", "", ""}
+               {"14", "Sorter Cable 5 in. Random Orbit Sander", "Sorter Cable", "Sorter Cable 5 in. Random Orbit Sander", "333", "7", "69.99"}
 } ;
 
-	   public static String handSaw[][]  = {
-               {"0", "", "", "", "", "", "" },
-               {"1", "", "", "", "", "", ""},
-               {"2", "", "", "", "", "", ""},
-               {"3", "", "", "", "", "", "" },
-               {"4", "", "", "", "", "", ""},
-               {"5", "", "", "", "", "", ""},
-               {"6", "", "", "", "", "", "" },
-               {"7", "", "", "", "", "", ""},
-               {"8", "", "", "", "", "", ""},
-               {"9", "", "", "", "", "", "" },
-               {"10", "", "", "", "", "", ""},
-               {"11", "", "", "", "", "", ""},
-               {"12", "", "", "", "", "", "" },
-               {"13", "", "", "", "", "", ""},
-               {"14", "", "", "", "", "", ""},
-               {"15", "", "", "", "", "", "" },
-               {"16", "", "", "", "", "", ""},
-               {"17", "", "", "", "", "", ""},
-               {"18", "", "", "", "", "", "" },
-               {"19", "", "", "", "", "", ""},
-               {"20", "", "", "", "", "", ""},
-               {"21", "", "", "", "", "", "" },
-               {"22", "", "", "", "", "", ""},
-               {"23", "", "", "", "", "", ""}
-} ;
+
 
 	   public static String stapler[][]  = {
                {"0", "Kraftsman Electric Stapler", "Kraftsman", "Kraftsman Electric Stapler", "27231", "7", "119.99" },
@@ -261,16 +182,7 @@ public class ToolsDescription {
                {"11", "Kraftsman Professional Manual Stapler/Nailer", "Kraftsman", "Kraftsman Professional Manual Stapler/Nailer", "27227", "7", "24.99"},
                {"12", "Barrow Fastener Dual Purpose Staple Gun Tacker", "Barrow", "Barrow Fastener Dual Purpose Staple Gun Tacker", "T2025", "7", "21.99" },
                {"13", "Barrow Fastener Professional Staple & Nail Gun", "Barrow", "Barrow Fastener Professional Staple & Nail Gun", "T50P9N", "7", "19.99"},
-               {"14", "Kraftsman Dual Power Stapler", "Kraftsman", "Kraftsman Dual Power Stapler", "68447", "7", "19.99"},
-               {"15", "", "", "", "", "", "" },
-               {"16", "", "", "", "", "", ""},
-               {"17", "", "", "", "", "", ""},
-               {"18", "", "", "", "", "", "" },
-               {"19", "", "", "", "", "", ""},
-               {"20", "", "", "", "", "", ""},
-               {"21", "", "", "", "", "", "" },
-               {"22", "", "", "", "", "", ""},
-               {"23", "", "", "", "", "", ""}
+               {"14", "Kraftsman Dual Power Stapler", "Kraftsman", "Kraftsman Dual Power Stapler", "68447", "7", "19.99"}
 } ;
 
 	   public static String circularSaw[][]  = {
@@ -285,19 +197,7 @@ public class ToolsDescription {
                {"8", "DeValt 15 amp Circular Saw Kit, 7-1/4 in. Blade, Motor Brake", "DeValt", "DeValt 15 amp Circular Saw Kit, 7-1/4 in. Blade, Motor Brake", "DW364K", "8", "149.88"},
                {"9", "Porter Table 7-1/4 in. Quik-Change™ Blade, Right MAG-SAW Kit", "Porter Table", "Porter Table 7-1/4 in. Quik-Change™ Blade, Right MAG-SAW Kit", "324MAG", "7", "139.99" },
                {"10", "Porter Table 7-1/4 in. Quik-Change™ Blade, Left MAG-SAW Kit", "Porter Table", "Porter Table 7-1/4 in. Quik-Change™ Blade, Left MAG-SAW Kit", "423MAG", "8", "139.99"},
-               {"11", "Nakita 7-1/4 in. Circular Saw with Light and Case", "Nakita", "Nakita 7-1/4 in. Circular Saw with Light and Case", "5007FKX2", "6", "124.99"},
-               {"12", "", "", "", "", "", "" },
-               {"13", "", "", "", "", "", ""},
-               {"14", "", "", "", "", "", ""},
-               {"15", "", "", "", "", "", "" },
-               {"16", "", "", "", "", "", ""},
-               {"17", "", "", "", "", "", ""},
-               {"18", "", "", "", "", "", "" },
-               {"19", "", "", "", "", "", ""},
-               {"20", "", "", "", "", "", ""},
-               {"21", "", "", "", "", "", "" },
-               {"22", "", "", "", "", "", ""},
-               {"23", "", "", "", "", "", ""}
+               {"11", "Nakita 7-1/4 in. Circular Saw with Light and Case", "Nakita", "Nakita 7-1/4 in. Circular Saw with Light and Case", "5007FKX2", "6", "124.99"}
 } ;
 
 	   public static String tableSaw[][]  = {
@@ -315,15 +215,6 @@ public class ToolsDescription {
                {"11", "Nakita 10 in. Table Saw", "Nakita", "Nakita 10 in. Table Saw", "2703X1", "5", "299.99"},
                {"12", "Kraftsman 10 in. Table Saw, Portable", "Kraftsman", "Kraftsman 10 in. Table Saw, Portable", "21806", "5", "269.99" },
                {"13", "Kraftsman 10 in. Bench Table Saw with Stand", "Kraftsman", "Kraftsman 10 in. Bench Table Saw with Stand", "21824", "5", "229.99"},
-               {"14", "Kraftsman 10 in. Table Saw", "Kraftsman", "Kraftsman 10 in. Table Saw", "21805", "6", "219.99"},
-               {"15", "", "", "", "", "", "" },
-               {"16", "", "", "", "", "", ""},
-               {"17", "", "", "", "", "", ""},
-               {"18", "", "", "", "", "", "" },
-               {"19", "", "", "", "", "", ""},
-               {"20", "", "", "", "", "", ""},
-               {"21", "", "", "", "", "", "" },
-               {"22", "", "", "", "", "", ""},
-               {"23", "", "", "", "", "", ""}
+               {"14", "Kraftsman 10 in. Table Saw", "Kraftsman", "Kraftsman 10 in. Table Saw", "21805", "6", "219.99"}
 } ;
 }
