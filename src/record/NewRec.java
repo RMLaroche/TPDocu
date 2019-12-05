@@ -35,10 +35,7 @@ public class NewRec extends Dialog  implements ActionListener {
 
     /** ********************************************************
      * Method: NewRec() is the constructor that is used to
-     * initialized/create the
-     * 1- Labels
-     * 2- Textfields
-     * 3- buttons
+     * initialized/create the Labels, Textfields buttons
      * for this class.
      ********************************************************/
     public NewRec( HardwareStore hw_store, RandomAccessFile
@@ -56,13 +53,7 @@ public class NewRec extends Dialog  implements ActionListener {
 
     /** ********************************************************
      * Method: setup() does the actual label, textfield, button
-     * setup and declares the layout manager that is used. It
-     * 1- sets the size of the dialog
-     * 2- creates the text fields
-     * 3- creates the labels
-     * 4- creates the buttons
-     * 5- adds the fields, labels, and buttons to the dialog
-     *    context.
+     * setup and declares the layout manager that is used. 
      ********************************************************/
     public void newSetup() {
        setSize( 400, 250 );
