@@ -66,7 +66,6 @@ public class Record  {
       int ii = 0 , loopCtl = 585 , len = 0 ;
       long remm = fileLen - filePos ;
 
-
       sysPrint( "ReadRec() 1a: Remaining bytes is " + remm ) ;
 
       sysPrint( "ReadRec() 1b: Reading ints" ) ;
