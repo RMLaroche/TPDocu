@@ -13,10 +13,7 @@ public class MouseClickedHandler extends MouseAdapter {
     JTable table;
     String pData[] [], columnNames[] ;
     RandomAccessFile f ;
-
- /** ********************************************************
-  *  Method:
-  ********************************************************/
+    
     MouseClickedHandler( RandomAccessFile fPassed , JTable tablePassed ,
                   String p_Data[] []) {
         table = tablePassed ;
@@ -24,9 +21,6 @@ public class MouseClickedHandler extends MouseAdapter {
         f     = fPassed ;
 
     }
- /** ********************************************************
-  *  Method: mouseClicked()
-  ********************************************************/
     public void mouseClicked( MouseEvent e )    {
        if ( e.getSource() == table) {
            int ii = table.getSelectedRow() ;
