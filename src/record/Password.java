@@ -95,31 +95,18 @@ public class Password extends Dialog implements ActionListener {
 			String uID = new String(userID.getText());
 
 			if ((uID.equals("admin")) && (pwd.equals("hwstore"))) {
-				if (whichDialog == "delete") {
+				if (whichDialog == "delete" || whichDialog == "update" || whichDialog == "add") {
 					hwStore.displayDeleteDialog();
 					whichDialog = "closed";
-					userID.setText("");
-					password.setText("");
-					clear();
-				} else if (whichDialog == "update") {
-					hwStore.displayUpdateDialog();
-					whichDialog = "closed";
-					userID.setText("");
-					password.setText("");
-					clear();
-				} else if (whichDialog == "add") {
-					hwStore.displayAddDialog();
-					whichDialog = "closed";
-					userID.setText("");
-					password.setText("");
 					clear();
 				}
 			} else {
 				JOptionPane.showMessageDialog(null, "A userid or the password was incorrect.\n", "Invalid Password",
 						JOptionPane.INFORMATION_MESSAGE);
-				userID.setText("");
-				password.setText("");
 			}
+			
+			userID.setText("");
+			password.setText("");
 		}
 
 		clear();
